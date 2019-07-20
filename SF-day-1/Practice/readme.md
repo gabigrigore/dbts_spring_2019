@@ -57,7 +57,7 @@ Main reasons: Transitive dependencies
 1. Method 1
 Use steps 6-14 from step (1) 'Create project' and replace ArtefactId with 'spring-xml-example')
 2. Method 2
-In IntelliJ right click on project name 'non-spring-example' and copy it then paste it in the same section.
+In IntelliJ right click on project name 'non-spring-example' and copy it then paste it in the same section. Then close the current project and open the new one.
 
 ##### 2. Spring XML Example : Code
 
@@ -138,7 +138,7 @@ Changes:
 1. Method 1
 Use steps 6-14 from step (1) 'Create project' and replace ArtefactId with 'spring-xml-example')
 2. Method 2
-In IntelliJ right click on project name 'spring-xml-example' and copy it then paste it in the same section.
+In IntelliJ right click on project name 'spring-xml-example' and copy it then paste it in the same section. Then close the current project and open the new one.
 
 ##### 3. Spring XML Example : Code
 
@@ -222,28 +222,94 @@ Changes:
 14. Go to 'Application' class, right click on 'main' and select 'Run Application.main()'. Or click the green arrow in the left on the same line as main.
 
 
-4. Spring Autowire Example : Create project
-Method 1
-Use steps 6-14 from step (1) 'Create project' and replace ArtefactId with 'spring-xml-example')
-Method 2
-In IntelliJ right click on project name 'spring-xml-example-2' and copy it then paste it in the same section.
-4. Spring Autowire Example : Code
-Go to File -> Settings -> ... -> Java Compiler : Target bytecode version and ensure is 8.
-Go to File -> Project Settings -> Modules : Sources and ensure language level is 8
-Go to File -> Project Settings -> Modules : Name and ensure is 'spring-xml-example'
-Open 'pom.xml' and change 'artifactId' to 'spring-autowire-example'
+##### 4. Spring Autowire Example : Create project
 
-Changes:
+In IntelliJ right click on project name 'spring-xml-example-2' and copy it then paste it in the same section. Then close the current project and open the new one.
 
-1. Open 'pom.xml' file and add after 'version tag the following: ```"<dependencies></dependencies>"```;
-2. Go to https://mvnrepository.com/artifact/org.springframework/spring-context and copy the dependency for the most up-to-date release (when this was written is 5.1.8) then add it to your 'pom.xml' file inside the 'dependencies' tag; It should look like this:
+##### 4. Spring Autowire Example : Code
+
+1. Go to File -> Settings -> ... -> Java Compiler : Target bytecode version and ensure is 8.
+2. Go to File -> Project Settings -> Modules : Sources and ensure language level is 8
+3. Go to File -> Project Settings -> Modules : Name and ensure is 'spring-xml-example'
+4. Open 'pom.xml' and change 'artifactId' to 'spring-autowire-example'
+5. No changes in 'pom.xml' file, 'spring-context' dependency should be there;
+6. First will try constructor autowire so open 'applicationContext.xml';
+7. Modify bean 'taskService' by removing the 'constructor-arg' entry.
+8. Remove the closing tag for the same bean and add ```/>``` at the end;
+9. For the 'taskService' bean add attribute 'autowire' with a value of 'constructor';
+10. Run the application. Check the output. Next autowire by type example.
+11. In the 'applicationContext.xml' file change the value of 'autowire' to 'byType';
+12. Make sure you have a setter in 'SimpleTaskService' with the parameter of type 'TaskRepository';
+13. If you have an error above when run the app check if you have a default constructor for 'SimpleTaskService'. Lack of it makes creating an object of that type impossible since we don't supply now a 'TaskRepository' object in any other way;
+14. Run the application. Check the output. Next autowire by name example.
+15. In the 'applicationContext.xml' file change the value of 'autowire' to 'byName';
+16. 12. Make sure you have a setter in 'SimpleTaskService' with the name of 'setTaskRepository';
+17. Run the application. Check the output.
+
+##### 5. Spring Annotation Example : Create project
+
+In IntelliJ close the curren project and open 'non-spring-example'. Once open right click on it, copy it then paste it in the same section. Then, again, close the current project and open the new one. (same operations can be done via OS copy the open the new project in IntelliJ)
+
+##### 5. Spring Annotation Example : Code
+
+1. Create a new file 'applicationContext.xml' in the folder 'src/main/resources';
+2. Add the new namespace for 'context'. After that the file should look like below:
 
     ```xml
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>5.1.8.RELEASE</version>
-            </dependency>
-        </dependencies>
+        <?xml version="1.0" encoding="UTF-8"?>
+        <beans xmlns="http://www.springframework.org/schema/beans"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:context="http://www.springframework.org/schema/context"
+            xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+        </beans>
     ```
+
+3. Add these two lines inside 'applicationContext.xml' inside the ```<bean>``` tag:
+
+    ```xml
+        <context:annotation-config />
+
+        <context:component-scan base-package="ro.dbts" />
+    ```
+
+    They help Spring to scan the defined package for annotated beans that will need to be managed.
+
+4. Stereotype Annotations
+
+   * @Component
+   * @Repository
+   * @Service
+  
+5. Open 'HibernateTaskRepository.java' file and add '@Repository("taskRepository") immediately above class definition.
+
+    ```java
+        @Repository("taskRepository")
+        public class HibernateTaskRepository implements TaskRepository {
+        ...
+    ```
+
+6. Open 'SimpleTaskService.java' file and add '@Service("taskRepository") immediately above class definition.
+
+    ```java
+        @Service("taskService")
+        public class SimpleTaskService implements TaskService {
+        ...
+    ```
+
+7. Remove the creation part of the 'TaskRepository' inside 'SimpleTaskService' and keep only the definition of it. Above definition add '@Autowired'.
+
+    ```java
+        @Autowired
+        private TaskRepository taskRepository;
+    ```
+
+    This is call 'member autowire' or 'autowire member' or 'member injection'.
+
+8. Run the application. Check the output.
+9. There are two other different methods to autowire:
+   * Constructor injection;
+   * Setter injection;
