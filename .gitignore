@@ -1,0 +1,4 @@
+#ignore all target/ folders
+target/
+#ignore all .iml files
+*.iml[M L7
