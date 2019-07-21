@@ -1,8 +1,15 @@
-##Day 1 : Spring first steps
-###Concepts
+## Day 1 : Spring first steps
+
+### Concepts
+
 * What is Spring?
-* Spring architecture
-* What is Dependency Injection?
-* How Spring works?
-    * Bean Factory
-    * Application Context
+* Evolution
+* High level architecture
+* Spring Core
+* Spring Web
+* Spring AOP
+* Spring Data
+* Spring Integration
+* Sprint Testing
+* Some Spring projects
+* Let's practice!
