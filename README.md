@@ -1,6 +1,6 @@
-#Spring Framework basics
+# Spring Framework basics
 
-##Technical requirements
+## Technical requirements
 
 1. Java 8
 2. Maven
@@ -9,19 +9,17 @@
 5. Internet access
 6. Energy to get through the day
 
-
-##The agenda
+## The agenda
 
 * Day 1 : Spring first steps
   * Concepts
   * Practice
-* Day 2: Spring ...
+* Day 2: Spring Boot
   * Concepts
   * Practice
-* Day 3: Spring ...
+* Day 3: Spring Web
   * Concepts
   * Practice
-* Day 4: Spring ...
+* Day 4: Recap
   * Concepts
   * Practice
-
