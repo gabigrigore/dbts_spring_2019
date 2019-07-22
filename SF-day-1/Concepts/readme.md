@@ -13,7 +13,7 @@
 
 ### Useful links valdid @20190722
 
-Spring Framework: https://spring.io/projects/spring-framework#overview 
-Spring Core: https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html 
-Spring Projects: https://spring.io/projects
+* Spring Framework: https://spring.io/projects/spring-framework#overview 
+* Spring Core: https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html 
+* Spring Projects: https://spring.io/projects
 
