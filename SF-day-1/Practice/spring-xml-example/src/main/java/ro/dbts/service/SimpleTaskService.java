@@ -7,11 +7,11 @@ import java.util.List;
 
 public class SimpleTaskService implements TaskService {
 
-  private TaskRepository taskRepository;  // = new HibernateTaskRepository();
+  private TaskRepository taskRepository;
 
-  public void setTaskRepository(TaskRepository taskRepository) {
-    this.taskRepository = taskRepository;
-  }
+//  public void setTaskRepository(TaskRepository taskRepository) {
+//    this.taskRepository = taskRepository;
+//  }
 
   @Override
   public List<Task> findAll() {

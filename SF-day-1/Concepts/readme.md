@@ -9,7 +9,4 @@
 * Spring Web
 * Spring AOP
 * Spring Data
-* Spring Integration
-* Sprint Testing
-* Some Spring projects
 * Let's practice!
