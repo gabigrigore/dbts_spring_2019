@@ -1,0 +1,7 @@
+ro\dbts\App.class
+ro\dbts\model\Task.class
+ro\dbts\repository\TaskRepository.class
+ro\dbts\service\TaskService.class
+ro\dbts\Application.class
+ro\dbts\repository\HibernateTaskRepository.class
+ro\dbts\service\SimpleTaskService.class
