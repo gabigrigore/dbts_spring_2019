@@ -1,0 +1,7 @@
+AppConfig.class
+store\service\OrderServiceClass.class
+store\service\OrderService.class
+store\repository\OrderRepositoryClass.class
+store\repository\OrderRepository.class
+Application.class
+store\model\Order.class
