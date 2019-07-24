@@ -36,7 +36,7 @@ public class StoreMaker {
 
     System.out.println("----");
 
-    System.out.println("Order 1: removed : " + service.removeOrder(service.findOrderById(1).get(0)));
+    System.out.println("Order 1: removed : " + service.removeOrder(service.findOrderById(1)));
 
     System.out.println("----");
 

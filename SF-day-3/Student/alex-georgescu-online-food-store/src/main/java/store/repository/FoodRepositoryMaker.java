@@ -21,8 +21,8 @@ public class FoodRepositoryMaker implements FoodRepository {
     }
 
     @Override
-    public List<Order> findOrderById(final int order_id) {
-        return orders.stream().filter(l -> l.getmId() == order_id).collect(Collectors.toList());
+    public Order findOrderById(final int order_id) {
+        return orders.stream().filter(l -> l.getmId() == order_id).collect(Collectors.toList()).get(0);
     }
 
     @Override

@@ -18,7 +18,7 @@ public class SimpleFoodService implements FoodService {
     }
 
     @Override
-    public List<Order> findOrderById(final int order_id) {
+    public Order findOrderById(final int order_id) {
         return orderRepository.findOrderById(order_id);
     }
 
