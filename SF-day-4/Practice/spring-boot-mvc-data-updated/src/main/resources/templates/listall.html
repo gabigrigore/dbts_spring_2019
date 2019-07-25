@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All task</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div style="width:50%;text-align:center;margin: 0 auto;">
+    <h1>DB Tech School Tasks</h1>
+    <table th:object="${tasks}" id="userTable" class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task :${tasks}">
+            <td  th:text="${task.id}"></td>
+            <td  th:text="${task.name}"></td>
+            <td  th:text="${task.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
